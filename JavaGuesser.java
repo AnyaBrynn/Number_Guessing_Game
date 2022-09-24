@@ -25,7 +25,7 @@ public class JavaGuesser {
             // check the input 
             if (guess == secretNum)
             {
-                System.out.println("Congrats " + playerName + " you guessed it!");
+                System.out.println("Congrats " + playerName + " you guessed it!\nIt took you " + (i+1) + " guesses");
                 break;
             }
             else if (guess > secretNum && i != tries - 1)

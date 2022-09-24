@@ -19,22 +19,30 @@ public class JavaGuesser {
         for (guesses = 0; guesses < tries; guesses++) 
         {
             System.out.println("Guess a number: ");
-            // user input 
-            guessedNum = sc.nextInt();
 
-            // check the input 
-            if (guessedNum == secretNum)
+            try
             {
-                System.out.println("Congrats " + playerName + " you guessed it!\nIt took you " + (guesses+1) + " guesses");
-                break;
+                // user input 
+                guessedNum = Integer.parseInt(sc.next());
+
+                // check the input 
+                if (guessedNum == secretNum)
+                {
+                    System.out.println("Congrats " + playerName + " you guessed it!\nIt took you " + (guesses+1) + " guesses");
+                    break;
+                }
+                else if (guessedNum > secretNum && guesses != tries - 1)
+                {
+                    System.out.println("Your guess is too high!");
+                }
+                else if (guessedNum < secretNum && guesses != tries - 1)
+                {
+                    System.out.println("Your guess is too low!");     
+                }
             }
-            else if (guessedNum > secretNum && guesses != tries - 1)
+            catch (NumberFormatException ex) 
             {
-                System.out.println("Your guess is too high!");
-            }
-            else if (guessedNum < secretNum && guesses != tries - 1)
-            {
-                System.out.println("Your guess is too low!");     
+                System.out.println("Please input a valid integer. ");
             }
         }
         if (guesses == tries)
@@ -42,7 +50,6 @@ public class JavaGuesser {
             System.out.println("Sorry " + playerName + ", you lost. The number I was thinking of was " + secretNum);
         }
        
-        
     }
     public static void main(String arg[])
     {

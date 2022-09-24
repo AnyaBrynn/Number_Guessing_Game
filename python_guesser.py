@@ -3,8 +3,11 @@ import random
 # computer chooses number 
 secretNumber = random.randint(1,99)
 
+# get player number
+playerName = input("Hello what is your name? ")
+
 # user guesses a number 
-guess = int(input("Guess a number between 1 and 99: "))
+guess = int(input("I'm thinking of a number between 1 and 99 \n" + playerName + "guess a number: "))
 
 # check if guess is correct 
 while guess != secretNumber:

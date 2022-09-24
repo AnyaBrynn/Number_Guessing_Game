@@ -8,7 +8,7 @@ public class JavaGuesser {
         // generate secret number 
         int secretNum = 1 + (int)(Math.random() * ((99 - 1) + 1));
         int tries = 7;
-        int guess;
+        int guesses, guessedNum;
 
         // get player name 
         System.out.println("Hello, what is your name?");
@@ -16,29 +16,33 @@ public class JavaGuesser {
 
         // start the game
         System.out.println("I'm thinking of a number between 1 and 99\nYou have 7 tries.");
-        for (int i = 0; i < tries; i++) 
+        for (guesses = 0; guesses < tries; guesses++) 
         {
             System.out.println("Guess a number: ");
             // user input 
-            guess = sc.nextInt();
+            guessedNum = sc.nextInt();
 
             // check the input 
-            if (guess == secretNum)
+            if (guessedNum == secretNum)
             {
-                System.out.println("Congrats " + playerName + " you guessed it!\nIt took you " + (i+1) + " guesses");
+                System.out.println("Congrats " + playerName + " you guessed it!\nIt took you " + (guesses+1) + " guesses");
                 break;
             }
-            else if (guess > secretNum && i != tries - 1)
+            else if (guessedNum > secretNum && guesses != tries - 1)
             {
                 System.out.println("Your guess is too high!");
-
             }
-            else if (guess < secretNum && i != tries - 1)
+            else if (guessedNum < secretNum && guesses != tries - 1)
             {
-                System.out.println("Your guess is too low!");
-                
+                System.out.println("Your guess is too low!");     
             }
         }
+        if (guesses == tries)
+        {
+            System.out.println("Sorry " + playerName + ", you lost. The number I was thinking of was " + secretNum);
+        }
+       
+        
     }
     public static void main(String arg[])
     {
